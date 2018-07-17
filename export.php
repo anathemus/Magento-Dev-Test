@@ -7,7 +7,7 @@ require_once __DIR__ . '/raz-lib.php';
 require_once __DIR__ . '/dev-lib.php';
 // disabled due to FORBIDDEN
 $apiWsdl = 'https://www.shopjuniorgolf.com/api/?wsdl';
-// $apiWsdl = 'http://www.thomas-bayer.com/axis2/services/BLZService?wsdl';
+// $apiWsdl = 'https://www.shopjuniorgolf.com/api/xmlrpc/';
 $apiUrl = 'https://www.shopjuniorgolf.com/api/';
 
 $apiUser = 'devtest';
@@ -26,6 +26,10 @@ try {
 catch(Exception $e){
     var_dump($e);
 }
+
+$sessionID = putenv("RAZOYO_SESSION_ID=$session");
+$soapClient = putenv("RAZOYO_SOAP_CLIENT=$soap");
+var_dump($sessionID);
 // attempting a session - not logged in to see what 
 // resources and methods are available
 // $session = $soap->startSession();
@@ -34,7 +38,7 @@ catch(Exception $e){
 // $result = $soap->call($session, array('catalog_product.list'));
 
 // dump them all in the console
-var_dump($result);
+// var_dump($result);
 // close out the session
 // $soap->endSession($session);
 // ...
