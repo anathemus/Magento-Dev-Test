@@ -50,10 +50,15 @@ $soapSession = SoapLogin::login($soap, $apiUser, $apiKey);
 // var_dump($result);
 // close out the session
 // $soap->endSession($session);
+$xml = new DOMDocument();
+$xml->load('products.xml');
+$xmlParser = new XMLParse();
+$xmlParser->xmlLoad($xml);
 // ...
 // You will need to create a FormatFactory.
 $factory = new FormatFactory(); 
 $format = $factory->create($formatKey);
+// var_dump($format);
 // See ProductOutput in raz-lib.php for reference
 $output = new ProductOutput();
 // ...

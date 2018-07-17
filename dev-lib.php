@@ -10,8 +10,6 @@ putenv("RAZOYO_TEST_KEY=$apiPass");
 // ---------------------------------------------------------------
 // Retrieved products list from using soapUI program. On to parsing!
 // ---------------------------------------------------------------
-$xml = new DOMDocument();
-$xml->load('products.xml');
 
 class XMLParse
 {
@@ -19,8 +17,7 @@ class XMLParse
     public function xmlLoad($xml) {
         $products = $xml->getElementsByTagName("item");
         foreach ($products as $product) {
-            $sku = $product;
-            var_dump($sku);
+            var_dump($product->nodeValue);
         }
     }
 }
@@ -44,7 +41,8 @@ class FormatFactory implements FormatInterface
     public $header;
     
     public function create($key) {
-        ProductOutput::setFormat($key);
+        $this->formatKey = $key;
+        return $key;
     }
     
     public function start() {
