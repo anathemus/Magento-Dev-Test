@@ -4,7 +4,7 @@
  */
 
  // set the API key
-$apiPass = 'ku%64TeYMo5mAIFj8e';
+$apiPass = 'password';
 putenv("RAZOYO_TEST_KEY=$apiPass");
 
 // ---------------------------------------------------------------
